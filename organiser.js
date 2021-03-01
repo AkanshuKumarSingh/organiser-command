@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 let fs = require('fs');
 let path = require('path');
 
@@ -8,7 +10,7 @@ let videoFolder = [];
 let directoryPath = path.join(__dirname);
 
 (function(){
-    console.log(__dirname);
+    // console.log(__dirname);
     fs.readdir(directoryPath, function (err, files) {
         //handling error
         if (err) {
@@ -24,11 +26,26 @@ let directoryPath = path.join(__dirname);
                 let ext = checkExt(file);           
             }
         });
-        console.log("doc : " + docFolder);
-        console.log("pic : " + picFolder);
-        console.log("video : " + videoFolder);
-        console.log("music : " + musicFolder);
-        picMove(picFolder[0],"pictures"); 
+        // console.log("doc : " + docFolder);
+        // console.log("pic : " + picFolder);
+        // console.log("video : " + videoFolder);
+        // console.log("music : " + musicFolder);
+        picFolder.forEach(element => {
+            picMove(element,"pictures");
+        });
+        
+        docFolder.forEach(element => {
+            picMove(element,"Documents");
+        });
+
+        videoFolder.forEach(element => {
+            picMove(element,"video");
+        });
+
+        musicFolder.forEach(element => {
+            picMove(element,"music");
+        });
+
     });          
     
 })();
@@ -54,10 +71,10 @@ function picMove(file,name) {
 
     var newPath = __dirname + `\\${name}\\${file}`; 
     var oldPath = __dirname + `\\${file}`;
-    console.log(newPath);
-    console.log(oldPath);
+    // console.log(newPath);
+    // console.log(oldPath);
     fs.rename(oldPath, newPath, function (err) {
         if (err) console.log(err.message);
-        console.log('Successfully renamed - AKA moved!')
+        console.log(file + ' moved in '+ name)
       });
 }
