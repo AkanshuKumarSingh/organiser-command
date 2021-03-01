@@ -31,7 +31,7 @@ let directoryPath = path.join(__dirname);
         // console.log("video : " + videoFolder);
         // console.log("music : " + musicFolder);
         picFolder.forEach(element => {
-            MoveIt(element,"pictures");
+            moveIt(element,"pictures");
         });
         
         docFolder.forEach(element => {
