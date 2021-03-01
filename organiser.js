@@ -31,19 +31,19 @@ let directoryPath = path.join(__dirname);
         // console.log("video : " + videoFolder);
         // console.log("music : " + musicFolder);
         picFolder.forEach(element => {
-            picMove(element,"pictures");
+            MoveIt(element,"pictures");
         });
         
         docFolder.forEach(element => {
-            picMove(element,"Documents");
+            moveIt(element,"Documents");
         });
 
         videoFolder.forEach(element => {
-            picMove(element,"video");
+            moveIt(element,"video");
         });
 
         musicFolder.forEach(element => {
-            picMove(element,"music");
+            moveIt(element,"music");
         });
 
     });          
@@ -63,7 +63,7 @@ function checkExt(fileName) {
     }
 }
 
-function picMove(file,name) {
+function moveIt(file,name) {
 
     if(!fs.existsSync(`${name}`)){
         fs.mkdirSync(`${name}`);

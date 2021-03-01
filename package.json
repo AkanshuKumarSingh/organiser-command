@@ -1,0 +1,22 @@
+{
+  "name": "organisercommand",
+  "version": "1.0.0",
+  "description": "",
+  "main": "organiser.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AkanshuKumarSingh/organiser-command.git"
+  },
+  "bin": {
+    "organiser": "organiser.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AkanshuKumarSingh/organiser-command/issues"
+  },
+  "homepage": "https://github.com/AkanshuKumarSingh/organiser-command#readme"
+}
