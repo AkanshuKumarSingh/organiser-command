@@ -7,10 +7,10 @@ let docFolder = [];
 let picFolder = [];
 let musicFolder = [];
 let videoFolder = [];
-let directoryPath = path.join(__dirname);
+
+let directoryPath = process.cwd();
 
 (function(){
-    // console.log(__dirname);
     fs.readdir(directoryPath, function (err, files) {
         //handling error
         if (err) {
@@ -18,6 +18,7 @@ let directoryPath = path.join(__dirname);
         } 
         //listing all files using forEach
         files.forEach(function (file) {
+            // console.log(file);
             let name = file.split(".");
             if(name[0] === ""){
                 // Do nothing because this is a git file
@@ -52,7 +53,7 @@ let directoryPath = path.join(__dirname);
 
 function checkExt(fileName) {
     let name = fileName.split(".")[1];
-    if(name === 'pdf' || name === '.ps' || name === '.html' || name === 'txt' || name === 'docx'){
+    if(name === 'pdf' || name === '.ps' || name === '.html' || name === 'txt' || name === 'docx' || name === 'rtf'){
         docFolder.push(fileName);       
     }else if(name === 'mp3' || name === 'wav' || name === 'aac' ||name === 'flac'){
         musicFolder.push(fileName);
@@ -69,8 +70,8 @@ function moveIt(file,name) {
         fs.mkdirSync(`${name}`);
     }
 
-    var newPath = __dirname + `\\${name}\\${file}`; 
-    var oldPath = __dirname + `\\${file}`;
+    var newPath = directoryPath + `\\${name}\\${file}`; 
+    var oldPath = directoryPath + `\\${file}`;
     // console.log(newPath);
     // console.log(oldPath);
     fs.rename(oldPath, newPath, function (err) {
